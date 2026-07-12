@@ -30,7 +30,10 @@ sha256sums=(
 )
 depends=('bash' 'perl' 'cups')
 depends_x86_64=('lib32-glibc' 'lib32-gcc-libs')
-optdepends=('brscan5')
+optdepends=(
+    'brscan5: scanner support'
+    'system-config-printer: graphical printer configuration tool'
+)
 
 prepare() {
     mkdir -p "${srcdir}"/{lpr,cups}
@@ -51,9 +54,8 @@ prepare() {
 
 package() {
     local SRC_PREFIX="/opt" # unfortunately, /opt is hard-coded into driver binaries and cannot be replaced
-    local PREFIX="/usr/share"
 
-    # Copying both .deb contents
+    # Copy contents from both Debian packages
     install -dm755 "${pkgdir}${SRC_PREFIX}"
 
     cp -a "${srcdir}/lpr/opt/brother"  "${pkgdir}${SRC_PREFIX}/"
@@ -68,7 +70,7 @@ package() {
     # Removing deprecated setupPrintcap
     rm -f "${pkgdir}${SRC_PREFIX}/brother/Printers/${_model}/inf/setupPrintcapij"
 
-    # Fixing ownership
+    # Fix permissions
     find "${pkgdir}${SRC_PREFIX}/brother" -type d -exec chmod 755 {} +
 
     find "${pkgdir}${SRC_PREFIX}/brother" -type f -exec chmod 644 {} +
@@ -82,18 +84,11 @@ package() {
     chmod 755 \
         "${pkgdir}${SRC_PREFIX}/brother/Printers/${_model}/cupswrapper/cupswrapper${_model}"
 
-	chmod 755 \
+    chmod 755 \
   		"${pkgdir}${SRC_PREFIX}/brother/Printers/${_model}/cupswrapper/brother_lpdwrapper_${_model}"
 
     chmod 755 \
         "${pkgdir}/usr/bin/brprintconf_${_model}"
-
-    # Symlink for the PPD
-    install -dm755 "${pkgdir}${PREFIX}/cups/model/Brother"
-
-    ln -s \
-        "${SRC_PREFIX}/brother/Printers/${_model}/cupswrapper/brother_${_model}_printer_en.ppd" \
-        "${pkgdir}${PREFIX}/cups/model/Brother/brother_${_model}_printer_en.ppd"
 
     # CUPS filter
     install -dm755 "${pkgdir}/usr/lib/cups/filter"
