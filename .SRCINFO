@@ -1,0 +1,24 @@
+pkgbase = brother-mfc-j3930dw
+	pkgdesc = LPR driver and CUPS wrapper for Brother MFC-J3930DW
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=as_ot&lang=en&prod=mfcj3930dw_eu_as_cn
+	arch = i686
+	arch = x86_64
+	license = LicenseRef-Brother-EULA
+	depends = bash
+	depends = perl
+	depends = cups
+	optdepends = brscan5
+	noextract = mfcj3930dwlpr-1.0.1-0.i386.deb
+	noextract = mfcj3930dwcupswrapper-1.0.1-0.i386.deb
+	source = mfcj3930dwlpr-1.0.1-0.i386.deb::https://download.brother.com/welcome/dlf103014/mfcj3930dwlpr-1.0.1-0.i386.deb
+	source = mfcj3930dwcupswrapper-1.0.1-0.i386.deb::https://download.brother.com/welcome/dlf103038/mfcj3930dwcupswrapper-1.0.1-0.i386.deb
+	source = LICENSE_ENG.txt
+	sha256sums = 9775622b7749397361c3a56c6ad85763ff3dc783561de649d77a912b444c0047
+	sha256sums = a0098ce2d9d61b343bf72cb1931215dd22eb1373cbf9501027b76d53e9714cf2
+	sha256sums = 46b2902ead35bd6d1a111740022133cb120bc7c32a2effdc8d381cc25a59dfa6
+	depends_x86_64 = lib32-glibc
+	depends_x86_64 = lib32-gcc-libs
+
+pkgname = brother-mfc-j3930dw

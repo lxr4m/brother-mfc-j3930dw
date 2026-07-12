@@ -1,0 +1,21 @@
+# makepkg
+pkg/
+src/
+
+# built packages
+*.pkg.tar.*
+*.pkg.tar
+*.pkg.tar.zst
+
+# downloaded sources
+*.deb
+
+# makepkg logs
+*.log
+
+# temporary files
+*.bak
+*.orig
+
+# editor
+*~
