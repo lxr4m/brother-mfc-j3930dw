@@ -12,11 +12,17 @@ This package repackages the official Brother Linux drivers into a standard `pacm
 
 ## ✨ Features
 ✅ Downloads official Brother driver packages
+
 ✅ Verifies downloaded files with SHA256 checksums
+
 ✅ Repackages Brother `.deb` drivers into an Arch package
+
 ✅ Installs CUPS PPD and printer filters
+
 ✅ No `debtap` required
+
 ✅ No manual extraction required
+
 ✅ Supports x86_64 systems with required 32-bit libraries
 
 This package only installs the printer driver.
